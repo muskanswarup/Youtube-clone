@@ -2,15 +2,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { RiVideoAddFill } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
-import { CgProfile } from "react-icons/cg";
+// import { CgProfile } from "react-icons/cg";
 import Avatar from 'react-avatar';
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between p-2 m-2 items-start">
+    <div className="flex justify-between p-2 m-3 items-start fixed w-full top-0 left-0 overflow-auto	">
         {/* First div with hamburger menu and logo */}
-      <div className="flex items-center space-x-4">
-        <GiHamburgerMenu  size={20}/>
+      <div className="flex items-center space-x-4 hover:cursor-pointer">
+        <GiHamburgerMenu  size={20} />
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png?20170829160812"
           alt="youtube_logo"
@@ -30,14 +30,14 @@ const Navbar = () => {
         </div>
       </div>
       {/* Third div with 3 icons */}
-      <div className="flex items-center space-x-4 ">
+      <div className="flex items-center space-x-4 mr-4">
           <button className="hover:bg-slate-400 rounded-lg">
             <RiVideoAddFill size={20}/>
           </button>
           <button>
-            <IoIosNotifications  size={20}/>        
+            <IoIosNotifications  size={22}/>        
           </button>
-          <button>
+          <button >
             {/* <CgProfile  size={18}/> */}
             <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxctjU21pUENIsGN1F4qY21P7GfdEbhTMp2g&s" size={30} round={true}/>
           </button>
