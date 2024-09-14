@@ -121,7 +121,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="border border-gray-700 px-4 py-4 h-screen overflow-y-auto pt-16">
+    <div className="border border-gray-700 px-4 py-4 h-screen overflow-y-auto pt-16 mt-4 w-[20%]" >
       {/* First 3 icons */}
       {sideBarItem.map((item, index) => {
         return (

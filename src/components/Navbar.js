@@ -7,9 +7,9 @@ import Avatar from 'react-avatar';
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between p-2 m-3 items-start fixed w-full top-0 left-0 overflow-auto	">
+    <div className="top-0 flex justify-between p-2 items-start fixed w-full left-0 overflow-auto bg-white">
         {/* First div with hamburger menu and logo */}
-      <div className="flex items-center space-x-4 hover:cursor-pointer">
+      <div className="flex m-3 items-center space-x-4 hover:cursor-pointer">
         <GiHamburgerMenu  size={20} />
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png?20170829160812"
@@ -18,7 +18,7 @@ const Navbar = () => {
         ></img>
       </div>
       {/* Second div with search bar  */}
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 m-3 flex justify-center">
         <div className="flex items-center w-full max-w-lg">
           <input
             placeholder="Search"
@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Third div with 3 icons */}
-      <div className="flex items-center space-x-4 mr-4">
+      <div className="flex m-3 items-center space-x-4 mr-4">
           <button className="hover:bg-slate-400 rounded-lg">
             <RiVideoAddFill size={20}/>
           </button>
