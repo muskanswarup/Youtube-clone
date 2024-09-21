@@ -25,7 +25,7 @@ const Navbar = () => {
         ></img>
       </div>
       {/* Second div with search bar  */}
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 m-3 flex justify-center">
         <div className="flex items-center w-full max-w-lg">
           <input
             placeholder="Search"
@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Third div with 3 icons */}
-      <div className="flex items-center space-x-4 mr-4">
+      <div className="flex m-3 items-center space-x-4 mr-4">
           <button className="hover:bg-slate-400 rounded-lg">
             <RiVideoAddFill size={20}/>
           </button>
