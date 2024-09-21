@@ -8,10 +8,14 @@ import { CgPlayList } from "react-icons/cg";
 import { AiFillLike, AiFillYoutube } from "react-icons/ai";
 import { GiShoppingBag, GiHanger } from "react-icons/gi";
 import { BsNewspaper, BsTrophyFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 
 
 const Sidebar = () => {
+
+  const open = useSelector((store) => store.app.open)
+  
   const sideBarItem = [
     {
       icon: <IoMdHome size={22} />,
@@ -121,20 +125,20 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="border border-gray-700 px-4 py-4 h-screen overflow-y-auto pt-16">
+    <div className=" px-4 py-4 h-screen overflow-y-auto pt-16 ml-2">
       {/* First 3 icons */}
       {sideBarItem.map((item, index) => {
         return (
           <div key={index} className="flex items-center space-x-4 py-2">
             {item.icon}
-            <p>{item.title}</p>
+            <p  className={`${open ? "" : 'hidden'}`} >{item.title}</p>
           </div>
         );
       })}
 
       {/* YOU part */}
       <div className="border-t-2 p-2 mt-2 items-center flex hover:bg-slate-200 hover:rounded-lg">
-        <h2 className="mr-2">You</h2>
+        <h2 className={`mr-2 ${open ? "" : 'hidden'}`}>You</h2>
         <FaAngleRight />
       </div>
 
@@ -142,35 +146,35 @@ const Sidebar = () => {
         return (
           <div key={index} className="flex items-center space-x-4 py-2">
             {item.icon}
-            <p>{item.title}</p>
+            <p className={`${open ? "" : 'hidden'}`}>{item.title}</p>
           </div>
         );
       })}
    
       {/* Explore options */}
       <div className="border-t-2 p-2 mt-2 items-center flex hover:bg-slate-200 hover:rounded-lg">
-        <h2 className="mr-2">Explore</h2>
+        <h2 className={`mr-2 ${open ? "" : 'hidden'}`}>Explore</h2>
       </div>
 
       {exploreItems.map((item, index) => {
         return (
           <div key={index} className="flex items-center space-x-4 py-2">
             {item.icon}
-            <p>{item.title}</p>
+            <p  className={`${open ? "" : 'hidden'}`} >{item.title}</p>
           </div>
         );
       })}
 
       {/* More from Yt */}
       <div className="border-t-2 p-2 mt-2 items-center flex hover:bg-slate-200 hover:rounded-lg">
-        <h2 className="mr-2">More from YouTube</h2>
+        <h2 className={`mr-2 ${open ? "" : 'hidden'}`} >More from YouTube</h2>
       </div>
 
       {moreItems.map((item, index) => {
         return (
           <div key={index} className="flex items-center space-x-4 py-2">
             {item.icon}
-            <p>{item.title}</p>
+            <p  className={`${open ? "" : 'hidden'}`} >{item.title}</p>
           </div>
         );
       })}

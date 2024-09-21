@@ -4,13 +4,20 @@ import { RiVideoAddFill } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
 // import { CgProfile } from "react-icons/cg";
 import Avatar from 'react-avatar';
+import {useDispatch} from "react-redux";
+import { toggleSidebar } from "../utils/appSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const toggleHandler = () => {
+      dispatch(toggleSidebar());
+  }
+    
   return (
-    <div className="flex justify-between p-2 m-3 items-start fixed w-full top-0 left-0 overflow-auto	">
+    <div className="flex justify-between p-2 items-start fixed w-full top-0 left-0  overflow-auto	bg-white">
         {/* First div with hamburger menu and logo */}
-      <div className="flex items-center space-x-4 hover:cursor-pointer">
-        <GiHamburgerMenu  size={20} />
+      <div className="flex items-center space-x-4 hover:cursor-pointer ml-4">
+        <GiHamburgerMenu onClick={toggleHandler} size={20} />
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png?20170829160812"
           alt="youtube_logo"

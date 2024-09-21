@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import TagList from './components/TagList';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
      <Navbar />
       <div className='flex'>
      <Sidebar/>
-      <h1>Video should render here!</h1>
+      <TagList/>
+      {/* <p>Video container</p> */}
       </div>
     </div>
   );
