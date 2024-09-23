@@ -125,7 +125,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className=" px-4 py-4 h-screen overflow-y-auto pt-16 ml-2">
+    <div className=" px-4 py-4 h-screen overflow-y-auto pt-16 ml-2 mt-2">
       {/* First 3 icons */}
       {sideBarItem.map((item, index) => {
         return (

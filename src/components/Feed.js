@@ -5,7 +5,7 @@ import VideoContainer from './VideoContainer';
 
 const Feed = () => {
   return (
-    <div className='mt-20'>
+    <div className='mt-24'>
         {/* Tags */}
         <div  >
             <TagList/>

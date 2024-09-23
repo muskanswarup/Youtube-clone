@@ -17,7 +17,7 @@ const TagList = () => {
     ];
 
   return (
-    <div  className=' mt-20'>
+    <div  >
         {
             tags.map((tagName , index) => {
                 return(

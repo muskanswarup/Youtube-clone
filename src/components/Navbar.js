@@ -2,7 +2,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { RiVideoAddFill } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
-// import { CgProfile } from "react-icons/cg";
 import Avatar from 'react-avatar';
 import {useDispatch} from "react-redux";
 import { toggleSidebar } from "../utils/appSlice";
@@ -14,7 +13,7 @@ const Navbar = () => {
   }
     
   return (
-    <div className="flex justify-between p-2 items-start fixed w-full top-0 left-0  overflow-auto	bg-white">
+    <div className="flex justify-between p-2 items-start fixed w-full top-0 left-0 mt-1 overflow-auto	bg-white">
         {/* First div with hamburger menu and logo */}
       <div className="flex items-center space-x-4 hover:cursor-pointer ml-4">
         <GiHamburgerMenu onClick={toggleHandler} size={20} />
