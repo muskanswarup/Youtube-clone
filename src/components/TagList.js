@@ -17,7 +17,7 @@ const TagList = () => {
     ];
 
   return (
-    <div  >
+    <div   >
         {
             tags.map((tagName , index) => {
                 return(

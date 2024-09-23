@@ -13,7 +13,7 @@ const Navbar = () => {
   }
     
   return (
-    <div className="flex justify-between p-2 items-start fixed w-full top-0 left-0 mt-1 overflow-auto	bg-white">
+    <div className="flex justify-between items-center p-2 fixed top-0 left-0 w-full bg-white shadow-sm z-50">
         {/* First div with hamburger menu and logo */}
       <div className="flex items-center space-x-4 hover:cursor-pointer ml-4">
         <GiHamburgerMenu onClick={toggleHandler} size={20} />
