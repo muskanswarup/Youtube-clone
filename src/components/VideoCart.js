@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import Avatar from "react-avatar";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { formatDistanceToNow } from "date-fns";
+import axios from "axios";
+import { API_KEY } from "../constants/youtube";
 
 const VideoCart = ({ item }) => {
+
+  const [ytIcon, setYtIcon] = useState("");
+  
+  const getYoutubeChannelName = async() => {
+    try{
+      const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${item.snippet.channelId}&key=${API_KEY}`)
+      setYtIcon(res.data.items[0].snippet.thumbnails.high.url);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getYoutubeChannelName();
+  }, []);
+
   return (
     <div className="cursor-pointer p-4 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-lg">
       {/* <p>VIdeo cart?</p> */}
@@ -16,7 +34,7 @@ const VideoCart = ({ item }) => {
         {/* Avatar and text */}
         <div className="flex">
           <Avatar
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo6wCUSmJEK9kC5KVqmQczHMH3OMcc_9BTTQ&s"
+            src={ytIcon}
             size="30"
             round={true}
             className="flex-shrink-0"
