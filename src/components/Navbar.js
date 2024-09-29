@@ -36,16 +36,16 @@ const Navbar = () => {
         </div>
       </div>
       {/* Third div with 3 icons */}
-      <div className="flex m-3 items-center space-x-4 mr-4">
-          <button className="hover:bg-slate-400 rounded-lg">
+      <div className="hidden md:flex m-3 items-center space-x-4 mr-4 ">
+          <button className="hover:bg-slate-400 rounded-lg p-1">
             <RiVideoAddFill size={20}/>
           </button>
           <button>
-            <IoIosNotifications  size={22}/>        
+            <IoIosNotifications  size={24}/>        
           </button>
           <button >
             {/* <CgProfile  size={18}/> */}
-            <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxctjU21pUENIsGN1F4qY21P7GfdEbhTMp2g&s" size={30} round={true}/>
+            <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxctjU21pUENIsGN1F4qY21P7GfdEbhTMp2g&s" size={24} round={true}/>
           </button>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from "react";
 import Avatar from "react-avatar";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { formatDistanceToNow } from "date-fns";
 import axios from "axios";
 import { API_KEY } from "../constants/youtube";

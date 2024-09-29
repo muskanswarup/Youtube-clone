@@ -13,11 +13,21 @@ const TagList = () => {
         "Tips",
         "DIY",
         "Novel",
+        "Gaming",
+        // "Cooking",
+        // "Learn",
+        // "Emmie",
+        // "HealthyGamer",
+        // "Bacon",
+        // "Cheese",
+        // "Sandwich",
+        // "Honeybadger"
+        
         
     ];
 
   return (
-    <div   >
+    <div  className='hidden md:block md:overflow-x-auto ' >
         {
             tags.map((tagName , index) => {
                 return(
