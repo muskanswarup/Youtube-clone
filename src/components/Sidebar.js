@@ -91,7 +91,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="px-4 py-4 h-screen overflow-y-auto fixed bg-white shadow-md z-40 pt-16  mt-2  ">
+    <div className="px-4 py-4 h-screen overflow-y-auto fixed bg-white shadow-md z-40 ml-2">
       {/* Always show the first 3 icons */}
       {sideBarItem.map((item) => renderSidebarItem(item, open))}
 

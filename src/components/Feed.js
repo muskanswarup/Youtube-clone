@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const Feed = () => {
   const open = useSelector((store) => store.app.open);
   return (
-    <div className={`mt-24 ${open ? 'ml-64' : 'ml-28'} transition-all duration-300`}>
+    <div className={`mt-6 ${open ? 'ml-64' : 'ml-28'} transition-all duration-300`}>
         {/* Tags */}
         <div  >
             <TagList/>
