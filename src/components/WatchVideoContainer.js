@@ -62,22 +62,22 @@ const WatchVideoContainer = () => {
   const open = useSelector((store) => store.app.open);
 
   return (
-    <div className="mt-6">
-      {/* Container wrapping both video and description */}
-      <div
-        className={`w-full max-w-[860px] mx-auto transition-all duration-300 ${
-          open ? "ml-64" : "ml-32"
-        }`}
-      >
-        {/* Video iframe */}
-        <iframe
-          className="rounded-lg w-full"
-          height="490"
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+    <div  
+    className={` transition-all duration-300 mt-6 w-full h-full  ${
+      open ? "ml-64" : "ml-32"
+    }`}
+    >
+     
+        {/* Responsive iframe wrapper */}
+        <div className="rounded-lg w-[100%] h-[55%]"> 
+          <iframe
+            className="h-full w-full rounded-lg"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
 
         {/* Video info */}
         <div className="mt-2 px-2 my-4">
@@ -176,11 +176,11 @@ const WatchVideoContainer = () => {
                 round={true}
               />
             <input className="border-b-2 border-black outline-none mx-2 my-1 px-2 w-[70%]" placeholder="Add a comment..."/>
-            <button className="rounded-full border-black bg-gray-300 border-1  px-3 py-2 m-2 ">Cancel</button>
-            <button className="rounded-full border-black border-1 bg-gray-300 px-3 py-2 ">Comment</button>
+            <button className="rounded-full border-black bg-gray-300 border-1  px-3 py-2 m-2 hover:cursor-pointer ">Cancel</button>
+            <button className="rounded-full border-black border-1 bg-gray-300 px-3 py-2 hover:cursor-pointer ">Comment</button>
           </div>
         </div>
-      </div>
+      {/* </div> */}
       {/* Comments */}
 
       <Comments videoId={videoId} />
