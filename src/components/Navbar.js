@@ -45,7 +45,7 @@ const Navbar = () => {
           </button>
           <button >
             {/* <CgProfile  size={18}/> */}
-            <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxctjU21pUENIsGN1F4qY21P7GfdEbhTMp2g&s" size={24} round={true}/>
+            <Avatar src={`https://avatarfiles.alphacoders.com/231/231277.jpg`} size={24} round={true}/>
           </button>
       </div>
     </div>
