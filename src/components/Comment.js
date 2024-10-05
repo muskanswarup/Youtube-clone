@@ -4,7 +4,12 @@ import Avatar from 'react-avatar';
 const Comment = ({ avatarUrl, username, timestamp, text }) => {
   return (
     <div className='flex items-start mb-4'>
-      <Avatar src={avatarUrl} size="35" round={true} />
+        <Avatar
+        src={avatarUrl || undefined} 
+        name={username}   
+        size="35"
+        round={true}
+      />
       
       <div className='ml-3'>
         {/* Comment header */}

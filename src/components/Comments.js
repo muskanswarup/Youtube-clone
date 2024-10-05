@@ -1,36 +1,67 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+// import { useSelector } from "react-redux";
 import Comment from './Comment';
+import { API_KEY } from '../constants/youtube';
+import axios from 'axios';
 
 const Comments = ({ videoId }) => {
-  const open = useSelector((store) => store.app.open);
+  // const open = useSelector((store) => store.app.open);
+  const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Sample comments data
-  const comments = [
-    {
-      avatarUrl: 'https://pbs.twimg.com/profile_images/990093841632903168/JpEYo8qH_400x400.jpg',
-      username: '@muskelon',
-      timestamp: '1 year ago',
-      text: 'Tiny VS Code extension made up of a few commands that generate and insert lorem ipsum text into a text file. To use the extension, open the command palette and select to insert.',
-    },
-    // Add more comment objects as needed...
-  ];
+  const getComments = async() => {
+    try{
+      
+      const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`);
+      console.log(res);
+
+      const fetchedComments = res.data.items.map((item) => ({
+        avatarUrl: item.snippet.topLevelComment.snippet.authorProfileImageUrl,
+        username: item.snippet.topLevelComment.snippet.authorDisplayName,
+        timestamp: new Date(item.snippet.topLevelComment.snippet.publishedAt).toLocaleDateString(),
+        text: item.snippet.topLevelComment.snippet.textDisplay
+      })) 
+      setComments(fetchedComments);
+      console.log(fetchedComments);
+
+    }catch(error){
+      setError('Failed to fetch comments.');
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if(videoId){
+      getComments();
+    }
+  }, [videoId]);
+
+ 
 
   return (
     <div>
       {/* Comments header */}
-      <h2 className='font-bold text-lg mb-4'>Comments for Video ID: {videoId}</h2>
+      {/* <h2 className='font-bold text-lg mb-4'>Comments for Video ID: {videoId}</h2> */}
       
-      {/* Map through comments */}
-      {comments.map((comment, index) => (
-        <Comment
-          key={index}
-          avatarUrl={comment.avatarUrl}
-          username={comment.username}
-          timestamp={comment.timestamp}
-          text={comment.text}
-        />
-      ))}
+      {
+        error && <p className='text-red-500'>{error}</p>
+      }
+      {
+        comments.length > 0 ? (
+          comments.map((comment, index) => (
+            <Comment 
+              key={index}
+              avatarUrl={comment.avatarUrl}
+              username={comment.username}
+              timestamp={comment.timestamp}
+              text={comment.text}
+            />
+          ))
+        ) : (
+          <p> No comments available.</p>
+        )
+      }
+
     </div>
   );
 };
