@@ -19,7 +19,10 @@ const Comments = ({ videoId }) => {
         avatarUrl: item.snippet.topLevelComment.snippet.authorProfileImageUrl,
         username: item.snippet.topLevelComment.snippet.authorDisplayName,
         timestamp: new Date(item.snippet.topLevelComment.snippet.publishedAt).toLocaleDateString(),
-        text: item.snippet.topLevelComment.snippet.textDisplay
+        text: item.snippet.topLevelComment.snippet.textDisplay,
+        likes: item.snippet.topLevelComment.snippet.likeCount,
+        replies: item.snippet.totalReplyCount
+        
       })) 
       setComments(fetchedComments);
       console.log(fetchedComments);
@@ -55,6 +58,8 @@ const Comments = ({ videoId }) => {
               username={comment.username}
               timestamp={comment.timestamp}
               text={comment.text}
+              likes={comment.likes}
+              replies={comment.replies}
             />
           ))
         ) : (

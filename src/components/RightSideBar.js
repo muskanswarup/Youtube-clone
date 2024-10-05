@@ -1,9 +1,14 @@
 import React from "react";
+import Chat from "./Chat";
 
 const RightSideBar = () => {
   return (
-    <div className="fixed top-10 right-0 bg-blue-500 p-2 rounded-md mt-64">
-      <p>RIGHT SIDE BAR</p>
+    <div className="
+      sm:hidden md:hidden 
+    fixed top-20 right-10 border border-black p-2 rounded-md ">
+      <Chat/>
+
+      {/* <p>RIGHT SIDE BAR</p> */}
     </div>
   );
 };
