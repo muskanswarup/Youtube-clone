@@ -22,7 +22,7 @@ const VideoCart = ({ item }) => {
   }, []);
 
   return (
-    <div className="cursor-pointer p-4 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-lg">
+    <div className="cursor-pointer p-4 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-lg ">
       {/* <p>VIdeo cart?</p> */}
       <img
         className="w-96 h-52 rounded-lg"
@@ -55,9 +55,7 @@ const VideoCart = ({ item }) => {
                 </p>
               </div>
             </div>
-            {/* <div className="ml-28">
-              <BsThreeDotsVertical />
-            </div> */}
+           
           </div>
         </div>
       </div>

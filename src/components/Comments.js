@@ -13,7 +13,7 @@ const Comments = ({ videoId }) => {
     try{
       
       const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`);
-      console.log(res);
+      // console.log(res);
 
       const fetchedComments = res.data.items.map((item) => ({
         avatarUrl: item.snippet.topLevelComment.snippet.authorProfileImageUrl,

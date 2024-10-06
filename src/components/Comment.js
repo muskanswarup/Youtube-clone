@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Comment = ({ avatarUrl, username, timestamp, text, likes, replies }) => {
   return (
-    <div className="flex items-start mb-4">
+    <div className="flex items-start mb-4  w-full xl:w-[1000px]">
       <Avatar
         src={avatarUrl || undefined}
         name={username}
@@ -13,7 +13,7 @@ const Comment = ({ avatarUrl, username, timestamp, text, likes, replies }) => {
         round={true}
       />
 
-      <div className="ml-3">
+      <div className="ml-3 ">
         {/* Comment header */}
         <div className="text-sm">
           <span className="font-semibold">{username}</span>
@@ -22,7 +22,7 @@ const Comment = ({ avatarUrl, username, timestamp, text, likes, replies }) => {
 
         {/* Comment body */}
 
-        <p className="text-sm mt-1 leading-relaxed break-words max-w-lg ">
+        <p className="text-sm mt-1 leading-relaxed break-words ">
           {text}
         </p>
         {/* Likes dislikes */}
@@ -33,7 +33,7 @@ const Comment = ({ avatarUrl, username, timestamp, text, likes, replies }) => {
         </div>
 
         {replies > 0 && (
-          <div className="text-blue text-md flex items-center mt-1 mr-2 text-blue-700">
+          <div className="text-blue text-md flex items-center mt-1 mr-2 text-blue-700 cursor-pointer">
             <IoIosArrowDown />
             <span>{replies} replies</span>
           </div>
