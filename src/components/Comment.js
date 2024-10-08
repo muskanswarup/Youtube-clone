@@ -5,12 +5,13 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Comment = ({ avatarUrl, username, timestamp, text, likes, replies }) => {
   return (
-    <div className="flex items-start mb-4  w-full xl:w-[1000px]">
+    <div className="flex items-start mb-4  w-full xl:w-[900px]">
       <Avatar
         src={avatarUrl || undefined}
         name={username}
         size="35"
         round={true}
+        className="flex-shrink-0"
       />
 
       <div className="ml-3 ">
