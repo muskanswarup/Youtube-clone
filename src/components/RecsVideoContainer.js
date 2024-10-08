@@ -42,7 +42,7 @@ const RecsVideoContainer = () => {
       {videos.map((video, index) => (
         <Link key={index} to={`/watch?v=${video.id}`} className="flex ml-10 mb-2 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer">
           {/* Image */}
-          <div className="w-[40%] ">
+          <div className="w-[40%] ml-2">
             <img
               className="w-44 h-24 rounded-lg object-fill"
               src={video.thumbnailUrl}
@@ -61,7 +61,7 @@ const RecsVideoContainer = () => {
             <span className="text-xs  text-gray-500">{video.timestamp}</span>
           </div>
           {/* Three dots icon */}
-          <div className="w-[5%] mt-1 mr-4">
+          <div className="w-[5%] mt-1 mr-6">
             <BsThreeDotsVertical />
           </div>
         </Link>
