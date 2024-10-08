@@ -64,7 +64,7 @@ const WatchVideoContainer = () => {
       const details = await axios.get(
         `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${API_KEY}`
       );
-      console.log(details);
+      // console.log(details);
 
       const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
       setSubscriberCount(subCount);
@@ -120,14 +120,14 @@ const WatchVideoContainer = () => {
                 subscribers
               </p>
             </div>
-            <button className="bg-black text-white text-xs  md:font-medium rounded-full px-3 py-2 ml-2 md:px-4 md:py-2 md:ml-4">
+            <button className="bg-black text-white text-xs  md:font-medium rounded-full sm:px-3 sm:py-2 sm:ml-2 px-4 py-2 ml-4">
               Subscribe
             </button>
           </div>
 
           {/* Icons - Like, Share, Download */}
-          <div className="flex px-2 py-1 md:px-4 md:py-2">
-            <div className="flex items-center border border-gray-300 rounded-full p-1 mr-1  md:p-2 md:mr-3 ">
+          <div className="flex sm:px-2 sm:py-1 px-4 py-2">
+            <div className="flex items-center border border-gray-300 rounded-full sm:p-1 sm:mr-1 p-2 mr-3 ">
               <AiOutlineLike 
               // size={20}
               size={window.innerWidth < 640 ? "16" : '20'} 
@@ -142,11 +142,11 @@ const WatchVideoContainer = () => {
                 className="m-1 hover:cursor-pointer"
               />
             </div>
-            <button className="flex items-center border border-gray-300 rounded-full p-1  md:p-2 mr-3">
+            <button className="flex items-center border border-gray-300 rounded-full sm:p-1  p-2 mr-3">
               <RiShareForwardLine size={window.innerWidth < 640 ? "16" : '20'}  />
               <span className="mx-2">Share</span>
             </button>
-            <button className="flex items-center border border-gray-300 rounded-full p-1 md:p-2">
+            <button className="flex items-center border border-gray-300 rounded-full sm:p-1 p-2">
               <MdOutlineFileDownload  size={window.innerWidth < 640 ? "15" : '20'} />
               <span className="mx-2">Download</span>
             </button>

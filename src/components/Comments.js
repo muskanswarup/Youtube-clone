@@ -25,7 +25,7 @@ const Comments = ({ videoId }) => {
         
       })) 
       setComments(fetchedComments);
-      console.log(fetchedComments);
+      // console.log(fetchedComments);
 
     }catch(error){
       setError('Failed to fetch comments.');

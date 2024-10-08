@@ -1,31 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-
-
+import { API_KEY } from "../constants/youtube";
+import axios from "axios";
+import { formatDistanceToNow } from "date-fns";
+import { Link } from "react-router-dom";
 const RecsVideoContainer = () => {
-  return (
-    <div className='flex ml-10 mb-2'>
-      {/* Image */}
-      <div className='w-[40%] border-2'>
-      <img
-        className="w-44 h-24 rounded-lg object-fill"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNv3OL21X2NDifSV04BxEtfqa5h3YSmPL08A&s"
-        alt="Yt_Thumbnail"
-      />
-      </div>
-      {/* Video info */}
-      <div className='w-[55%] border-2 text-wrap'>
-        <h4>Learn React with FreeCodeCamp</h4>
-        <p className='text-sm'>@freecodecamp</p>
-        <span className='text-xs'>2.7M views .</span>
-        <span className='text-xs'>1 year  ago</span>
-      </div>
-      {/* Three dots icon */}
-      <div className='w-[5%]'>
-        <BsThreeDotsVertical/>
-      </div>
-    </div>
-  )
-}
+  const [videos, setVideos] = useState([]);
 
-export default RecsVideoContainer
+  const getVideo = async () => {
+    try {
+      const res = await axios.get(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=20&key=${API_KEY}`
+      );
+      console.log(res.data.items);
+
+      const fetchedVideos = res.data.items.map((item) => ({
+        id: item.id,
+        title: item.snippet.title,
+        channelTitle: item.snippet.channelTitle,
+        views: item.statistics.viewCount,
+        thumbnailUrl: item.snippet.thumbnails.high.url,
+        // timestamp: item.snippet.publishedAt
+        timestamp: formatDistanceToNow(new Date(item.snippet.publishedAt), {
+          addSuffix: true,
+        }),
+      }));
+
+      setVideos(fetchedVideos);
+      // console.log(fetchedVideos);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getVideo();
+  });
+
+  return (
+    <div>
+      {videos.map((video, index) => (
+        <Link key={index} to={`/watch?v=${video.id}`} className="flex ml-10 mb-2 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer">
+          {/* Image */}
+          <div className="w-[40%] ">
+            <img
+              className="w-44 h-24 rounded-lg object-fill"
+              src={video.thumbnailUrl}
+              alt="Yt_Thumbnail"
+            />
+          </div>
+          {/* Video info */}
+          <div className="w-[55%]  text-wrap  px-2 py-1">
+            <p className="text-sm font-medium ">{video.title}</p>
+            <p className="text-xs  text-gray-500">{video.channelTitle}</p>
+            <span className="text-xs  text-gray-500">
+            {new Intl.NumberFormat("en", {
+                  notation: "compact",
+                }).format(video.views)}{" . "}
+            </span>
+            <span className="text-xs  text-gray-500">{video.timestamp}</span>
+          </div>
+          {/* Three dots icon */}
+          <div className="w-[5%] mt-1 mr-4">
+            <BsThreeDotsVertical />
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default RecsVideoContainer;
