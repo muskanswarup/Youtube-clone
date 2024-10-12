@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { RiVideoAddFill } from "react-icons/ri";
@@ -5,6 +6,7 @@ import { IoIosNotifications } from "react-icons/io";
 import Avatar from 'react-avatar';
 import {useDispatch} from "react-redux";
 import { toggleSidebar } from "../utils/appSlice";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -12,6 +14,16 @@ const Navbar = () => {
       dispatch(toggleSidebar());
   }
     
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const navigate = useNavigate();
+  // const handleSearch = ()=>{
+  //   console.log(searchTerm);
+  //   if(searchTerm.trim()){
+  //     navigate(`/results?search=${searchTerm}`);
+  //   }
+  // }
+
+
   return (
     <div className="flex justify-between items-center p-2 fixed top-0 left-0 w-full bg-white shadow-sm z-50">
         {/* First div with hamburger menu and logo */}
@@ -29,8 +41,12 @@ const Navbar = () => {
           <input
             placeholder="Search"
             className="w-full h-10 pl-4 border border-gray-400 outline-none rounded-l-full text-sm placeholder-gray-500"
+            // value={searchTerm}
+            // onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="w-16 h-10 flex justify-center items-center border border-gray-400 p-1 rounded-r-full">
+          <button 
+          // onClick={handleSearch}
+           className="w-16 h-10 flex justify-center items-center border border-gray-400 p-1 rounded-r-full">
             <FaSearch  size={18}/>
           </button>
         </div>

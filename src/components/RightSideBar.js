@@ -1,5 +1,6 @@
 import React from "react";
 import RecsVideoContainer from "./RecsVideoContainer";
+// import Chat from "./Chat";
 
 
 const RightSideBar = ({videoId}) => {
@@ -7,6 +8,7 @@ const RightSideBar = ({videoId}) => {
  
   return (
     <div className="mt-6 top-10 right-12   ">
+      {/* <Chat /> */}
      <RecsVideoContainer/>
     </div>
   );

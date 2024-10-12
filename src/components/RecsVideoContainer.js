@@ -10,9 +10,9 @@ const RecsVideoContainer = () => {
   const getVideo = async () => {
     try {
       const res = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=20&key=${API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=30&key=${API_KEY}`
       );
-      console.log(res.data.items);
+      // console.log(res.data.items);
 
       const fetchedVideos = res.data.items.map((item) => ({
         id: item.id,

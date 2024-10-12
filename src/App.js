@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Watch from "./components/Watch";
 import Feed from "./components/Feed";
-import SearchResults from "./components/SearchResults";
+// import SearchResults from "./components/SearchResults";
 
 
 const appRouter = createBrowserRouter([
@@ -19,11 +19,11 @@ const appRouter = createBrowserRouter([
       {
         path:"/watch",
         element:<Watch/>
-      },
-      {
-        path:"/results",
-        element: <SearchResults/>
       }
+      // {
+      //   path:"/results",
+      //   element: <SearchResults/>
+      // }
     ]
   }
 ])

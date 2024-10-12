@@ -43,14 +43,35 @@ const WatchVideoContainer = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
 
+  // const getSingleVideo = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
+  //     );
+  //     const videoData = res?.data?.items[0];
+  //     setSingleVideo(videoData);
+
+  //     if (videoData?.snippet?.channelId) {
+  //       getChannelDetails(videoData.snippet.channelId);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const getSingleVideo = async () => {
+    const cachedVideo = localStorage.getItem(`video_${videoId}`);
+    if (cachedVideo) {
+      setSingleVideo(JSON.parse(cachedVideo));
+      return;
+    }
+    
     try {
       const res = await axios.get(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
       );
       const videoData = res?.data?.items[0];
       setSingleVideo(videoData);
-
+      localStorage.setItem(`video_${videoId}`, JSON.stringify(videoData)); // Cache response
       if (videoData?.snippet?.channelId) {
         getChannelDetails(videoData.snippet.channelId);
       }
@@ -58,24 +79,60 @@ const WatchVideoContainer = () => {
       console.log(error);
     }
   };
+  
 
+  // const getChannelDetails = async (channelId) => {
+  //   try {
+  //     const details = await axios.get(
+  //       `https://www.googleapis.com/youtube/v3/channels?part=statistics&maxResults=2&id=${channelId}&key=${API_KEY}`
+  //     );
+  //     // console.log(details);
+
+  //     const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
+  //     setSubscriberCount(subCount);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const getChannelDetails = async (channelId) => {
+  //   const cachedChannel = localStorage.getItem(`channel_${channelId}`);
+  //   if (cachedChannel) {
+  //     setSubscriberCount(JSON.parse(cachedChannel)?.subscriberCount);
+  //     return;
+  //   }
+  
+  //   try {
+  //     const details = await axios.get(
+  //       `https://www.googleapis.com/youtube/v3/channels?part=statistics&maxResults=1&id=${channelId}&key=${API_KEY}`
+  //     );
+  //     const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
+  //     setSubscriberCount(subCount);
+  //     localStorage.setItem(`channel_${channelId}`, JSON.stringify({ subscriberCount: subCount }));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  
+  // Even better
   const getChannelDetails = async (channelId) => {
-    try {
-      const details = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${API_KEY}`
-      );
-      // console.log(details);
-
-      const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
-      setSubscriberCount(subCount);
-    } catch (error) {
-      console.log(error);
+    const cachedChannel = localStorage.getItem(`channel_${channelId}`);
+    if (cachedChannel) {
+      return JSON.parse(cachedChannel);
     }
+  
+    const response = await axios.get(`...channel api...`);
+    localStorage.setItem(`channel_${channelId}`, JSON.stringify(response.data));
+    return response.data;
   };
+  
+
 
   useEffect(() => {
-    getSingleVideo();
-  }, []);
+    if (videoId) {
+      getSingleVideo();
+    }
+  }, [videoId]);  // Fetch only when videoId changes
 
   // const open = useSelector((store) => store.app.open);
 

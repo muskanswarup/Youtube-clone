@@ -1,62 +1,50 @@
-import React, { useEffect,useState } from "react";
-import Avatar from "react-avatar";
+
+import React from "react";
 import { formatDistanceToNow } from "date-fns";
-import axios from "axios";
-import { API_KEY } from "../constants/youtube";
 
 const VideoCart = ({ item }) => {
-
-  const [ytIcon, setYtIcon] = useState("");
-  
-  const getYoutubeChannelName = async() => {
-    try{
-      const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${item.snippet.channelId}&key=${API_KEY}`)
-      setYtIcon(res.data.items[0].snippet.thumbnails.high.url);
-    }catch(error){
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getYoutubeChannelName();
-  }, []);
+  // Channel Icon is now passed as part of `item` from VideoContainer
+  const ytIcon = item.channelIcon;  
+  const videoThumbnail = item.snippet.thumbnails.high.url;
+  const videoTitle = item.snippet.title;
+  const channelTitle = item.snippet.channelTitle;
+  // const publishedAt = new Date(item.snippet.publishedAt).toLocaleDateString();
+  const publishedAt = new Date(item.snippet.publishedAt);
+  const viewCount = item.statistics?.viewCount || "N/A";  // Fallback if not available
 
   return (
-    <div className="cursor-pointer p-4 transition-transform duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-lg ">
-      {/* <p>VIdeo cart?</p> */}
+    <div className="p-2">
+      {/* Video Thumbnail */}
       <img
-        className="w-96 h-52 rounded-lg"
-        src={item.snippet.thumbnails.high.url}
-        alt="Yt_Thumbnail"
+        src={videoThumbnail}
+        alt="Video Thumbnail"
+        className="w-full h-40 rounded-lg object-cover"
       />
-      <div className="flex justify-between mt-2">
-        {/* Avatar and text */}
-        <div className="flex">
-          <Avatar
+
+      {/* Video Info */}
+      <div className="mt-2">
+        {/* Video Title */}
+        <h3 className="font-bold text-sm truncate">{videoTitle}</h3>
+
+        {/* Channel Info */}
+        <div className="flex items-center mt-2">
+          {/* Channel Icon */}
+          <img
             src={ytIcon}
-            size="30"
-            round={true}
-            className="flex-shrink-0"
+            alt="Channel Icon"
+            className="w-8 h-8 rounded-full mr-2"
           />
-          <div className="flex ">
-            <div className="ml-2 ">
-              <h1 className="font-medium">{item.snippet.title}</h1>
-              <p className="text-gray-500">{item.snippet.channelTitle}</p>
-              <div className="flex text-gray-500 text-sm">
-                <p>
-                  {new Intl.NumberFormat("en", { notation: "compact" }).format(
-                    item.statistics.viewCount
-                  )}{" "}
-                  views •
-                </p>
-                <p className="ml-2">
-                  {" "}
-                  {formatDistanceToNow(new Date(item.snippet.publishedAt))} ago
-                </p>
-              </div>
-            </div>
-           
-          </div>
+          {/* Channel Title */}
+          <p className="text-sm text-gray-500">{channelTitle}</p>
+        </div>
+
+        {/* Video Stats */}
+        <div className="text-gray-500 text-xs mt-1">
+          <span>
+          {new Intl.NumberFormat("en", {
+                  notation: "compact",
+                }).format(viewCount)}{" . "}
+             views</span> • <span>{formatDistanceToNow(publishedAt)} ago</span>
         </div>
       </div>
     </div>
