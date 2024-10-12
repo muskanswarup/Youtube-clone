@@ -2,6 +2,7 @@
 
 # /constants/youtube.js
 /src/constants/youtube.js
+.env
 
 # dependencies
 /node_modules
