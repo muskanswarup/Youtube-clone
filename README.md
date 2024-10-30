@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully responsive YouTube Clone built with **React** and **Tailwind CSS**, connected to the YouTube API to fetch and display real-time video data. This project features core YouTube functionalities, including a video playback screen, recommended videos, and video details, providing users with a familiar viewing experience.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup and Installation](#setup-and-installation)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive Design**: Layout adjusts for desktop, tablet, and mobile screens.
+- **Video Playback**: Displays video details like title, view count, like count, and description.
+- **Recommendations Sidebar**: Shows related videos on the right, with separate sections for video thumbnails and details.
+- **Watch Component**: Subdivided into `WatchPageVideoContainer`, `CommentSection`, and `RightSideBar` for a modular structure.
+- **API Integration**: Fetches video data in real-time from the YouTube API.
+  
+---
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: Frontend framework
+- **Tailwind CSS**: Styling
+- **Vercel**: Deployment
+- **YouTube API**: Video data
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup and Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/username/youtube-clone.git
+   cd youtube-clone
+   ```
+2. **Install dependencies**:
+   ```npm install  ```
+3. **Set up environment variables**:
+    REACT_APP_BASE_URL=Your YouTube API Base URL
+   
+    REACT_APP_API_KEY=Your YouTube API Key
+   
+    These environment variables are referenced in the youtube.js file located in the constants folder.
+5. **Start the app**:
+    ```npm start```
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Main page:
+![Main_page](https://github.com/user-attachments/assets/b7e33ea0-2267-4a47-9b55-c1f5fcdc870c)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Navbar toggle:
+![ToggleNavBar](https://github.com/user-attachments/assets/ee68f3b7-2083-48e0-aa91-bd2bb354340c)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Watch page and Recommendations section:
+![Watch_page1](https://github.com/user-attachments/assets/38a5baf5-40de-4e60-856e-c7942fba6a86)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Comment Section:
+![Watch_2](https://github.com/user-attachments/assets/17f2d4dc-8000-4e93-88cc-958697c12a00)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
