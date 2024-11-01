@@ -4,7 +4,7 @@ import { formatDistanceToNow } from "date-fns";
 
 const VideoCart = ({ item }) => {
   // Channel Icon is now passed as part of `item` from VideoContainer
-  const ytIcon = item.channelIcon;  
+  const ytIcon = item?.channelIcon;  
   const videoThumbnail = item.snippet.thumbnails.high.url;
   const videoTitle = item.snippet.title;
   const channelTitle = item.snippet.channelTitle;

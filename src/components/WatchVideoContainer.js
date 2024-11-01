@@ -81,19 +81,19 @@ const WatchVideoContainer = () => {
   };
   
 
-  // const getChannelDetails = async (channelId) => {
-  //   try {
-  //     const details = await axios.get(
-  //       `https://www.googleapis.com/youtube/v3/channels?part=statistics&maxResults=2&id=${channelId}&key=${API_KEY}`
-  //     );
-  //     // console.log(details);
+  const getChannelDetails = async (channelId) => {
+    try {
+      const details = await axios.get(
+        `https://www.googleapis.com/youtube/v3/channels?part=statistics&maxResults=2&id=${channelId}&key=${API_KEY}`
+      );
+      // console.log(details);
 
-  //     const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
-  //     setSubscriberCount(subCount);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      const subCount = details?.data?.items[0]?.statistics?.subscriberCount;
+      setSubscriberCount(subCount);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const getChannelDetails = async (channelId) => {
   //   const cachedChannel = localStorage.getItem(`channel_${channelId}`);
@@ -114,17 +114,17 @@ const WatchVideoContainer = () => {
   //   }
   // };
   
-  // Even better
-  const getChannelDetails = async (channelId) => {
-    const cachedChannel = localStorage.getItem(`channel_${channelId}`);
-    if (cachedChannel) {
-      return JSON.parse(cachedChannel);
-    }
+  // // Even better
+  // const getChannelDetails = async (channelId) => {
+  //   const cachedChannel = localStorage.getItem(`channel_${channelId}`);
+  //   if (cachedChannel) {
+  //     return JSON.parse(cachedChannel);
+  //   }
   
-    const response = await axios.get(`...channel api...`);
-    localStorage.setItem(`channel_${channelId}`, JSON.stringify(response.data));
-    return response.data;
-  };
+  //   const response = await axios.get(`...channel api...`);
+  //   localStorage.setItem(`channel_${channelId}`, JSON.stringify(response.data));
+  //   return response.data;
+  // };
   
 
 
@@ -187,24 +187,24 @@ const WatchVideoContainer = () => {
             <div className="flex items-center border border-gray-300 rounded-full sm:p-1 sm:mr-1 p-2 mr-3 ">
               <AiOutlineLike 
               // size={20}
-              size={window.innerWidth < 640 ? "16" : '20'} 
+              size={window.innerWidth < 640 ? "16" : '22'} 
               className="m-1 hover:cursor-pointer" />
-              <span className="mr-4 mx-1 border-r-2 border-gray-300 px-1">
+              <span className="mr-4 mx-1 border-r-2 border-gray-300 px-1 text-sm">
                 {new Intl.NumberFormat("en", {
                   notation: "compact",
                 }).format(singleVideo?.statistics?.likeCount)}
               </span>
               <AiOutlineDislike
-               size={window.innerWidth < 640 ? "16" : '20'} 
+               size={window.innerWidth < 640 ? "16" : '22'} 
                 className="m-1 hover:cursor-pointer"
               />
             </div>
             <button className="flex items-center border border-gray-300 rounded-full sm:p-1  p-2 mr-3">
-              <RiShareForwardLine size={window.innerWidth < 640 ? "16" : '20'}  />
+              <RiShareForwardLine size={window.innerWidth < 640 ? "16" : '22'}  />
               <span className="mx-2">Share</span>
             </button>
             <button className="flex items-center border border-gray-300 rounded-full sm:p-1 p-2">
-              <MdOutlineFileDownload  size={window.innerWidth < 640 ? "15" : '20'} />
+              <MdOutlineFileDownload  size={window.innerWidth < 640 ? "15" : '22'} />
               <span className="mx-2">Download</span>
             </button>
           </div>

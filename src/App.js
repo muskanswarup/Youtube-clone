@@ -7,26 +7,58 @@ import Feed from "./components/Feed";
 // import SearchResults from "./components/SearchResults";
 
 
+// const appRouter = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Body/>,
+//     children:[
+//       {
+//         path:"/",
+//         element:<Feed/>
+//       },
+//       {
+//         path:"/watch",
+//         element:<Watch/>
+//       }
+      
+//     ]
+//   }
+// ])
+
+// const appRouter = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Body />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Feed />
+//       }
+//       // {
+//       //   path:"/results",
+//       //   element: <SearchResults/>
+//       // }
+//     ]
+//   },
+//   {
+//     path: "/watch",
+//     element: <Watch />
+//   }
+// ]);
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body/>,
-    children:[
-      {
-        path:"/",
-        element:<Feed/>
-      },
-      {
-        path:"/watch",
-        element:<Watch/>
-      }
-      // {
-      //   path:"/results",
-      //   element: <SearchResults/>
-      // }
+    element: <Body />,
+    children: [
+      { path: "/", element: <Feed /> }
     ]
-  }
-])
+  },
+  { path: "/watch", element: <Watch /> },
+  // Fallback route
+  { path: "*", element: <Body /> }
+]);
+
 
 
 function App() {

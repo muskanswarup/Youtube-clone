@@ -19,7 +19,7 @@ const Watch = () => {
       </div>
       
       {/* RightSideBar takes 30% width on larger screens */}
-      <div className="w-full h-full lg:w-[55%] ">
+      <div className="w-full h-full lg:w-[55%] mt-16">
         <RightSideBar videoId={videoId} />
       </div>
     </div>
